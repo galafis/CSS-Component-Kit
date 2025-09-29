@@ -31,9 +31,10 @@ Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando
 CSS-Component-Kit/
 ├── index.html              # Showcase dos componentes principais
 ├── styles.css              # Biblioteca completa de componentes
-├── extensions/             # Componentes avançados (tabs, accordions, tooltips)
+├── extensions/             # Componentes avançados (tabs, accordions, tooltips, dark mode)
 │   ├── README-EXTENSIONS.md
 │   ├── accordion.html
+│   ├── dark-mode.html
 │   ├── tabs.html
 │   └── tooltip.html
 ├── README.md               # Documentação principal
@@ -59,7 +60,7 @@ cd CSS-Component-Kit
 python -m http.server 8000
 
 # Usando Node.js
-px serve .
+npx serve .
 ```
 
 ### Uso dos Componentes
@@ -215,16 +216,23 @@ Acordeão expansível usando checkboxes
 Tooltips com múltiplas posições (top, right, bottom, left)
 - Ver: `extensions/tooltip.html`
 
+### ✅ Dark Mode (Modo Escuro)
+Modo escuro 100% CSS puro com toggle switch interativo
+- Ver: `extensions/dark-mode.html`
+- Toggle visual com ícones lua/sol
+- Adaptação automática de todos os componentes
+- Implementação educativa usando CSS Variables e `:checked`
+
 Para mais detalhes, consulte `extensions/README-EXTENSIONS.md`
 
 ## 🔧 Extensões Futuras
 
-- [ ] Tema dark mode (toggle CSS variables)
 - [ ] Animações e transições avançadas
 - [ ] Componentes de data/calendar
 - [ ] Charts e gráficos CSS
 - [ ] Integração com frameworks JavaScript
 - [ ] Sistema de temas customizáveis
+- [ ] Mais variações de dark mode
 
 ## 🤝 Contribuindo
 
