@@ -8,7 +8,7 @@ Kit completo de componentes UI reutilizáveis implementados com CSS3 puro, inclu
 
 ## 🎯 Demonstração
 
-Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando o desenvolvimento de interfaces web consistentes e profissionais.
+Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando o desenvolvimento de interfaces web consistentes e profissionais. Abra o `index.html` em seu navegador para ver todos os componentes em ação!
 
 ## ✨ Características
 
@@ -17,6 +17,7 @@ Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando
 - **CSS Puro**: Sem dependências JavaScript
 - **Customizável**: Fácil personalização via CSS Variables
 - **Responsivo**: Todos os componentes adaptáveis
+- **Extensões**: Componentes avançados na pasta `extensions/`
 
 ## 🛠️ Tecnologias
 
@@ -28,35 +29,43 @@ Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando
 
 ```
 CSS-Component-Kit/
-├── index.html          # Showcase dos componentes
-├── styles.css          # Biblioteca de componentes
-├── README.md           # Documentação
-├── LICENSE             # Licença MIT
-└── .gitignore          # Arquivos ignorados pelo Git
+├── index.html              # Showcase dos componentes principais
+├── styles.css              # Biblioteca completa de componentes
+├── extensions/             # Componentes avançados (tabs, accordions, tooltips)
+│   ├── README-EXTENSIONS.md
+│   ├── accordion.html
+│   ├── tabs.html
+│   └── tooltip.html
+├── README.md               # Documentação principal
+├── LICENSE                 # Licença MIT
+└── .gitignore              # Arquivos ignorados pelo Git
 ```
 
 ## 🚀 Como Usar
 
 ### Instalação
 
-1. Clone o repositório:
+**1.** Clone o repositório:
+
 ```bash
 git clone https://github.com/galafis/CSS-Component-Kit.git
 cd CSS-Component-Kit
 ```
 
-2. Abra o arquivo `index.html` no navegador:
+**2.** Abra o arquivo index.html no navegador:
+
 ```bash
 # Usando Python
 python -m http.server 8000
 
 # Usando Node.js
-npx serve .
+px serve .
 ```
 
 ### Uso dos Componentes
 
 #### Botões
+
 ```html
 <button class="btn btn-primary">Primary Button</button>
 <button class="btn btn-secondary">Secondary Button</button>
@@ -64,29 +73,31 @@ npx serve .
 ```
 
 #### Cards
+
 ```html
 <div class="card">
-    <div class="card-header">
-        <h3>Card Title</h3>
-    </div>
-    <div class="card-body">
-        <p>Card content goes here...</p>
-    </div>
-    <div class="card-footer">
-        <button class="btn btn-primary">Action</button>
-    </div>
+  <div class="card-header">
+    <h3>Card Title</h3>
+  </div>
+  <div class="card-body">
+    <p>Card content goes here...</p>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-primary">Action</button>
+  </div>
 </div>
 ```
 
 #### Navigation
+
 ```html
 <nav class="navbar">
-    <div class="navbar-brand">Brand</div>
-    <ul class="navbar-nav">
-        <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-    </ul>
+  <div class="navbar-brand">Brand</div>
+  <ul class="navbar-nav">
+    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+  </ul>
 </nav>
 ```
 
@@ -95,33 +106,35 @@ npx serve .
 ### Layout
 - **Container**: Sistema de grid responsivo
 - **Flexbox Utilities**: Classes utilitárias para layout
-- **Spacing**: Margins e paddings padronizados
+- **Grid System**: `.grid`, `.grid-2`, `.grid-3`, `.grid-4` com responsividade
+- **Spacing**: Margins e paddings padronizados (`.mt-*`, `.mb-*`, `.p-*`)
 
 ### Navegação
-- **Navbar**: Barra de navegação responsiva
+- **Navbar**: Barra de navegação responsiva com gradiente
 - **Breadcrumb**: Navegação hierárquica
-- **Pagination**: Paginação de conteúdo
+- **Pagination**: Paginação de conteúdo com estados ativos
 
 ### Conteúdo
-- **Cards**: Containers de conteúdo flexíveis
-- **Modals**: Janelas modais overlay
-- **Alerts**: Mensagens de feedback
-- **Badges**: Indicadores e labels
+- **Cards**: Containers de conteúdo flexíveis com header, body e footer
+- **Modals**: Janelas modais overlay (CSS-only com `:target`)
+- **Alerts**: Mensagens de feedback (success, warning, danger, info)
+- **Badges**: Indicadores e labels coloridos
 
 ### Formulários
-- **Form Controls**: Inputs estilizados
+- **Form Controls**: Inputs, selects e textareas estilizados
 - **Form Groups**: Agrupamento de campos
-- **Validation**: Estados de validação
+- **Validation**: Estados de validação (`.is-valid`, `.is-invalid`)
 
 ### Utilitários
-- **Typography**: Classes para texto
-- **Colors**: Paleta de cores
-- **Shadows**: Efeitos de sombra
-- **Borders**: Bordas e cantos arredondados
+- **Typography**: Classes para texto (`.h1`, `.h2`, `.h3`, `.text-muted`)
+- **Colors**: Paleta de cores completa via CSS Variables
+- **Shadows**: Efeitos de sombra (`.shadow-sm`, `.shadow-md`, `.shadow-lg`)
+- **Borders**: Bordas e cantos arredondados (`.rounded`, `.rounded-full`)
 
 ## 🎨 Sistema de Design
 
 ### Cores
+
 ```css
 :root {
     --primary: #667eea;
@@ -136,6 +149,7 @@ npx serve .
 ```
 
 ### Espaçamentos
+
 ```css
 :root {
     --spacing-xs: 4px;
@@ -147,6 +161,7 @@ npx serve .
 ```
 
 ### Tipografia
+
 ```css
 :root {
     --font-size-sm: 14px;
@@ -167,6 +182,11 @@ Todos os componentes incluem breakpoints responsivos:
 /* Desktop: 1024px+ */
 ```
 
+O sistema de grid se adapta automaticamente:
+- **Mobile**: Todas as colunas empilham (1 coluna)
+- **Tablet**: Grid-3 e Grid-4 se tornam 2 colunas
+- **Desktop**: Todas as grids mantêm suas colunas originais
+
 ## 🔧 Personalização
 
 Customize facilmente modificando as variáveis CSS:
@@ -179,14 +199,32 @@ Customize facilmente modificando as variáveis CSS:
 }
 ```
 
-## 🔧 Extensões Possíveis
+## 🎁 Extensões Disponíveis
 
-- [ ] Mais componentes (tabs, accordions, tooltips)
-- [ ] Tema dark mode
+Na pasta `extensions/` você encontra componentes avançados:
+
+### ✅ Tabs (Abas)
+Sistema de abas puro CSS usando radio buttons e `:checked`
+- Ver: `extensions/tabs.html`
+
+### ✅ Accordion (Acordeão)
+Acordeão expansível usando checkboxes
+- Ver: `extensions/accordion.html`
+
+### ✅ Tooltips
+Tooltips com múltiplas posições (top, right, bottom, left)
+- Ver: `extensions/tooltip.html`
+
+Para mais detalhes, consulte `extensions/README-EXTENSIONS.md`
+
+## 🔧 Extensões Futuras
+
+- [ ] Tema dark mode (toggle CSS variables)
 - [ ] Animações e transições avançadas
 - [ ] Componentes de data/calendar
 - [ ] Charts e gráficos CSS
 - [ ] Integração com frameworks JavaScript
+- [ ] Sistema de temas customizáveis
 
 ## 🤝 Contribuindo
 
@@ -213,3 +251,4 @@ Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICE
 
 ⭐ Se este projeto foi útil, considere deixar uma estrela!
 
+*Desenvolvido com 💜 e CSS3 puro por Gabriel Demetrios Lafis*
