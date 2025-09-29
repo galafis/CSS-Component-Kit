@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CSS Component Kit — Tabs (Abas) · extensions/tabs.html</title>
+  <style>
+    /* CSS Component Kit — Tabs (Abas)
+       Autor: Gabriel Demetrios Lafis
+       Versão: 1.0 (Set/2025)
+       Arquivo: extensions/tabs.html
+       Descrição: Componente de abas 100% HTML + CSS, acessível e responsivo. */
+
+    :root {
+      --ck-color-primary: #2563eb;
+      --ck-color-primary-600: #1d4ed8;
+      --ck-color-secondary: #6b7280;
+      --ck-color-bg: #ffffff;
+      --ck-color-surface: #f8fafc;
+      --ck-color-border: #e5e7eb;
+      --ck-color-text: #0f172a;
+      --ck-color-text-muted: #475569;
+      --ck-radius-sm: 6px;
+      --ck-radius-md: 10px;
+      --ck-shadow-sm: 0 1px 2px rgba(2, 6, 23, 0.06);
+      --ck-shadow-md: 0 6px 18px rgba(2, 6, 23, 0.08);
+      --ck-gap-1: .5rem;
+      --ck-gap-2: .75rem;
+      --ck-gap-3: 1rem;
+      --ck-gap-4: 1.25rem;
+      --ck-transition-fast: 160ms ease;
+      --ck-transition-slow: 280ms cubic-bezier(.2,.7,.2,1);
+    }
+
+    body { margin: 0; background: var(--ck-color-surface); color: var(--ck-color-text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; line-height: 1.5; }
+    .demo-page { max-width: 980px; margin: 2rem auto; padding: 1.25rem; }
+    .ck-heading { margin: 0 0 .25rem; font-size: 1.625rem; font-weight: 700; letter-spacing: -.01em; }
+    .ck-sub { margin: 0 0 1.25rem; color: var(--ck-color-text-muted); }
+
+    .ck-tabs { background: var(--ck-color-bg); border: 1px solid var(--ck-color-border); border-radius: var(--ck-radius-md); box-shadow: var(--ck-shadow-sm); overflow: hidden; }
+    .ck-tabs__nav { display: flex; gap: 2px; background: #f1f5f9; padding: 4px; border-bottom: 1px solid var(--ck-color-border); position: relative; }
+    .ck-tabs__radio { position: absolute; opacity: 0; pointer-events: none; }
+    .ck-tabs__label { appearance: none; border: 0; background: transparent; color: var(--ck-color-text-muted); font-weight: 600; padding: .625rem .875rem; border-radius: var(--ck-radius-sm); cursor: pointer; user-select: none; display: inline-flex; align-items: center; gap: .5rem; transition: color var(--ck-transition-fast), background var(--ck-transition-fast); outline: none; }
+    .ck-tabs__label:hover { background: rgba(2, 6, 23, 0.04); color: var(--ck-color-text); }
+    .ck-tabs__label:focus-visible { outline: 2px solid var(--ck-color-primary); outline-offset: 2px; box-shadow: 0 0 0 3px rgba(37, 99, 235, .35); }
+    .ck-tabs__list { display: flex; flex-wrap: wrap; gap: 4px; }
+    .ck-tabs__content { display: none; padding: 1rem 1rem 1.25rem; animation: ck-fade var(--ck-transition-slow) both; }
+    @keyframes ck-fade { from { opacity: 0; transform: translateY(2px); } to { opacity: 1; transform: translateY(0); } }
+
+    #tab-1:checked ~ .ck-tabs__panels #panel-1,
+    #tab-2:checked ~ .ck-tabs__panels #panel-2,
+    #tab-3:checked ~ .ck-tabs__panels #panel-3,
+    #tab-4:checked ~ .ck-tabs__panels #panel-4 { display: block; }
+
+    #tab-1:checked ~ .ck-tabs__nav label[for="tab-1"],
+    #tab-2:checked ~ .ck-tabs__nav label[for="tab-2"],
+    #tab-3:checked ~ .ck-tabs__nav label[for="tab-3"],
+    #tab-4:checked ~ .ck-tabs__nav label[for="tab-4"] { color: var(--ck-color-primary); background: #e8f0fe; }
+
+    .ck-tabs__label[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+    .ck-tabs__label[data-loading="true"] { position: relative; color: var(--ck-color-secondary); }
+    .ck-tabs__label[data-loading="true"]::after { content: ""; width: 14px; height: 14px; border-radius: 50%; border: 2px solid #cbd5e1; border-top-color: var(--ck-color-primary); animation: ck-spin .8s linear infinite; }
+    @keyframes ck-spin { to { transform: rotate(360deg); } }
+
+    .ck-prose h4 { margin: 0 0 .25rem; font-size: 1.1rem; }
+    .ck-prose p { margin: 0 0 .75rem; color: var(--ck-color-text-muted); }
+    .ck-prose ul { margin: .25rem 0 0 1.25rem; }
+
+    .ck-tabs--vertical { display: grid; grid-template-columns: 220px 1fr; }
+    .ck-tabs--vertical .ck-tabs__nav { flex-direction: column; border-right: 1px solid var(--ck-color-border); border-bottom: 0; }
+    .ck-tabs--vertical .ck-tabs__list { flex-direction: column; }
+    .ck-tabs--vertical .ck-tabs__label { width: 100%; justify-content: space-between; }
+
+    @media (max-width: 640px) {
+      .ck-tabs { border-radius: var(--ck-radius-sm); }
+      .ck-tabs__nav { padding: 6px; gap: 6px; }
+      .ck-tabs__label { flex: 1 1 auto; text-align: center; }
+      .ck-tabs--vertical { grid-template-columns: 1fr; }
+      .ck-tabs--vertical .ck-tabs__nav { flex-direction: row; border-right: 0; border-bottom: 1px solid var(--ck-color-border); }
+    }
+
+    .ck-card { background: var(--ck-color-bg); border: 1px solid var(--ck-color-border); border-radius: var(--ck-radius-md); box-shadow: var(--ck-shadow-sm); padding: 1rem; }
+    .mb-2 { margin-bottom: .5rem; }
+    .mb-3 { margin-bottom: 1rem; }
+    .muted { color: var(--ck-color-text-muted); }
+    .inline-icon { width: 1em; height: 1em; display: inline-block; }
+  </style>
+</head>
+<body>
+  <main class="demo-page">
+    <header class="mb-3">
+      <h1 class="ck-heading">Tabs (Abas) — CSS-only</h1>
+      <p class="ck-sub">Componente de navegação em abas, sem JavaScript, com suporte a estados e variação vertical.</p>
+    </header>
+
+    <section class="ck-card mb-3">
+      <h2 class="mb-2" id="docs">Documento e Guia Rápido</h2>
+      <p class="muted mb-2">Autor: Gabriel Demetrios Lafis — Este arquivo serve como documentação viva do componente de abas.</p>
+      <ul class="muted">
+        <li>HTML + CSS puros, usando radios + labels para controle de estado.</li>
+        <li>Estados: active (selecionado), disabled e loading (simulado com CSS).</li>
+        <li>Suporte a ícones nas abas e versão vertical.</li>
+        <li>Responsivo: em telas pequenas, as abas se distribuem fluidamente.</li>
+        <li>Acessibilidade: navegação por teclado e roles ARIA nos painéis.</li>
+      </ul>
+    </section>
+
+    <!-- Exemplo 1: Tabs horizontais com ícones -->
+    <section class="mb-3">
+      <h3 class="mb-2">Exemplo 1 — Abas Horizontais</h3>
+      <div class="ck-tabs" role="tablist" aria-label="Exemplo de Abas Horizontais">
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex1" id="tab-1" checked />
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex1" id="tab-2" />
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex1" id="tab-3" />
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex1" id="tab-4" />
+
+        <nav class="ck-tabs__nav">
+          <div class="ck-tabs__list">
+            <label class="ck-tabs__label" for="tab-1" role="tab" aria-controls="panel-1" aria-selected="true">
+              <span aria-hidden="true" class="inline-icon">🏁</span>
+              Início
+            </label>
+            <label class="ck-tabs__label" for="tab-2" role="tab" aria-controls="panel-2">
+              <span aria-hidden="true" class="inline-icon">📦</span>
+              Conteúdo
+            </label>
+            <label class="ck-tabs__label" for="tab-3" role="tab" aria-controls="panel-3" aria-disabled="true" tabindex="-1">
+              <span aria-hidden="true" class="inline-icon">⛔</span>
+              Desabilitado
+            </label>
+            <label class="ck-tabs__label" for="tab-4" role="tab" aria-controls="panel-4" data-loading="true">
+              <span aria-hidden="true" class="inline-icon">⏳</span>
+              Carregando
+            </label>
+          </div>
+        </nav>
+
+        <div class="ck-tabs__panels">
+          <section id="panel-1" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="tab-1">
+            <h4>Bem-vindo às Abas</h4>
+            <p>Este é o painel inicial. Use as abas acima para alternar o conteúdo.</p>
+            <ul>
+              <li>Sem JavaScript</li>
+              <li>Com animação de entrada suave</li>
+              <li>Design consistente com o kit</li>
+            </ul>
+          </section>
+          <section id="panel-2" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="tab-2">
+            <h4>Conteúdo Estruturado</h4>
+            <p>As abas podem conter qualquer HTML: textos, listas, imagens e mais.</p>
+          </section>
+          <section id="panel-3" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="tab-3">
+            <h4>Aba Desabilitada</h4>
+            <p>Este painel não fica visível por padrão — a aba correspondente está desativada.</p>
+          </section>
+          <section id="panel-4" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="tab-4">
+            <h4>Estado de Carregamento</h4>
+            <p>Exemplo visual de loading em CSS. Em projetos reais, combine com JS, se necessário.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- Exemplo 2: Tabs verticais (sidebar) -->
+    <section class="mb-3">
+      <h3 class="mb-2">Exemplo 2 — Abas Verticais</h3>
+      <div class="ck-tabs ck-tabs--vertical" role="tablist" aria-label="Exemplo de Abas Verticais">
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex2" id="vtab-1" checked />
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex2" id="vtab-2" />
+        <input class="ck-tabs__radio" type="radio" name="tabs-ex2" id="vtab-3" />
+
+        <nav class="ck-tabs__nav">
+          <div class="ck-tabs__list">
+            <label class="ck-tabs__label" for="vtab-1" role="tab" aria-controls="vpanel-1" aria-selected="true">Visão Geral</label>
+            <label class="ck-tabs__label" for="vtab-2" role="tab" aria-controls="vpanel-2">Detalhes</label>
+            <label class="ck-tabs__label" for="vtab-3" role="tab" aria-controls="vpanel-3">Ajustes</label>
+          </div>
+        </nav>
+
+        <div class="ck-tabs__panels">
+          <section id="vpanel-1" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="vtab-1">
+            <h4>Visão Geral</h4>
+            <p>Use este layout quando houver muitas seções e títulos longos.</p>
+          </section>
+          <section id="vpanel-2" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="vtab-2">
+            <h4>Detalhes</h4>
+            <p>Perfeito para configurações, preferências ou documentação segmentada.</p>
+          </section>
+          <section id="vpanel-3" class="ck-tabs__content ck-prose" role="tabpanel" aria-labelledby="vtab-3">
+            <h4>Ajustes</h4>
+            <p>Combine com utilitários do kit (spacing, tipografia, sombras) para resultados consistentes.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <section class="ck-card">
+      <h3 class="mb-2">Como usar no seu projeto</h3>
+      <ol class="muted">
+        <li>Copie o bloco .ck-tabs, mantendo a estrutura: inputs (radios), navegação (labels) e painéis.</li>
+        <li>Garanta que cada label for="tab-x" corresponda a um input id="tab-x" e a um painel id="panel-x".</li>
+        <li>Para desabilitar uma aba, adicione aria-disabled="true" no label (opcionalmente remova o for para bloquear clique).</li>
+        <li>Para mostrar loading, adicione data-loading="true" ao label da aba.</li>
+        <li>Para versão vertical, aplique a classe ck-tabs--vertical no container .ck-tabs.</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>
