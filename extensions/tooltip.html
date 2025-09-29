@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tooltip - CSS Component Kit</title>
+  <style>
+    /* =================================== */
+    /* TOOLTIP - CSS COMPONENT KIT         */
+    /* Autor: Gabriel Demetrios Lafis      */
+    /* =================================== */
+
+    :root {
+      --tt-bg: #111827;           /* slate-900 */
+      --tt-text: #f8fafc;         /* slate-50  */
+      --tt-border: #1f2937;       /* slate-800 */
+      --tt-shadow: 0 10px 25px rgba(0,0,0,.18), 0 2px 8px rgba(0,0,0,.12);
+      --tt-radius: 10px;
+      --tt-padding: 10px 12px;
+      --tt-gap: 8px;              /* distância entre trigger e tooltip */
+      --tt-maxw: min(320px, calc(100vw - 24px));
+      --tt-scale: .96;            /* escala inicial da animação */
+      --tt-duration: 160ms;       /* tempo da animação */
+      --tt-ease: cubic-bezier(.2,.7,.2,1);
+      --focus-ring: 0 0 0 3px rgba(59,130,246,.35); /* azul-500 com opacidade */
+    }
+
+    /* Reset básico apenas para a demo */
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      color: #0f172a; /* slate-900 */
+      background: #ffffff; /* white */
+      line-height: 1.5;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      gap: 28px;
+    }
+
+    header h1 { margin: 0 0 4px; font-size: 24px; }
+    header p { margin: 0; color: #334155; }
+
+    /* Tooltip base */
+    .tt {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    /* Elemento de conteúdo do tooltip */
+    .tt-content {
+      position: absolute;
+      z-index: 20;
+      max-width: var(--tt-maxw);
+      background: var(--tt-bg);
+      color: var(--tt-text);
+      border: 1px solid var(--tt-border);
+      border-radius: var(--tt-radius);
+      padding: var(--tt-padding);
+      box-shadow: var(--tt-shadow);
+      font-size: 14px;
+      line-height: 1.4;
+
+      opacity: 0;
+      transform: scale(var(--tt-scale));
+      pointer-events: none; /* evita foco/hover quando oculto */
+      transition:
+        opacity var(--tt-duration) var(--tt-ease),
+        transform var(--tt-duration) var(--tt-ease),
+        translate var(--tt-duration) var(--tt-ease);
+    }
+
+    /* Seta do tooltip */
+    .tt-content::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--tt-bg);
+      border: 1px solid var(--tt-border);
+      transform: rotate(45deg);
+    }
+
+    /* Estados visíveis: por hover ou foco dentro do wrapper */
+    .tt:is(:hover, :focus-within) .tt-content,
+    .tt-trigger:focus ~ .tt-content {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .tt .tt-trigger {
+      appearance: none;
+      background: #0ea5e9; /* sky-500 */
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 1px 0 rgba(0,0,0,.06), inset 0 -1px 0 rgba(0,0,0,.06);
+    }
+
+    .tt .tt-trigger:focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    /* Posições: top, right, bottom, left */
+    .tt[data-placement="top"] .tt-content {
+      bottom: calc(100% + var(--tt-gap));
+      left: 50%; translate: -50% 0;
+    }
+    .tt[data-placement="top"] .tt-content::after {
+      bottom: -6px; left: 50%; translate: -50% 0;
+      border-left: none; border-top: none;
+    }
+
+    .tt[data-placement="right"] .tt-content {
+      left: calc(100% + var(--tt-gap)); top: 50%; translate: 0 -50%;
+    }
+    .tt[data-placement="right"] .tt-content::after {
+      left: -6px; top: 50%; translate: 0 -50%;
+      border-bottom: none; border-left: none;
+    }
+
+    .tt[data-placement="bottom"] .tt-content {
+      top: calc(100% + var(--tt-gap)); left: 50%; translate: -50% 0;
+    }
+    .tt[data-placement="bottom"] .tt-content::after {
+      top: -6px; left: 50%; translate: -50% 0;
+      border-right: none; border-bottom: none;
+    }
+
+    .tt[data-placement="left"] .tt-content {
+      right: calc(100% + var(--tt-gap)); top: 50%; translate: 0 -50%;
+    }
+    .tt[data-placement="left"] .tt-content::after {
+      right: -6px; top: 50%; translate: 0 -50%;
+      border-top: none; border-right: none;
+    }
+
+    /* Deslocamento sutil por posição ao aparecer */
+    .tt[data-placement="top"]:is(:hover, :focus-within) .tt-content { translate: -50% -2px; }
+    .tt[data-placement="right"]:is(:hover, :focus-within) .tt-content { translate: 2px -50%; }
+    .tt[data-placement="bottom"]:is(:hover, :focus-within) .tt-content { translate: -50% 2px; }
+    .tt[data-placement="left"]:is(:hover, :focus-within) .tt-content { translate: -2px -50%; }
+
+    /* Conteúdo rico: título + texto + ações */
+    .tt-title {
+      font-weight: 700; font-size: 14px; margin: 0 0 6px; color: #e2e8f0; /* slate-200 */
+    }
+    .tt-body { margin: 0; color: #e5e7eb; }
+    .tt-actions { margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap; }
+    .tt-actions .btn {
+      font: inherit; font-weight: 600; padding: 6px 10px; border-radius: 8px;
+      border: 1px solid #334155; background: #0b1220; color: #f8fafc; cursor: pointer;
+    }
+    .tt-actions .btn:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+
+    /* Layout de demonstração */
+    .grid {
+      display: grid; gap: 20px; grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+
+    .demo-card {
+      border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px; background: #ffffff;
+    }
+
+    /* Acessibilidade: preferências de redução de movimento */
+    @media (prefers-reduced-motion: reduce) {
+      .tt-content { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" role="document">
+    <header>
+      <h1>Tooltip (HTML + CSS puro)</h1>
+      <p>Componente reutilizável, responsivo, acessível e com animação suave.</p>
+    </header>
+
+    <section class="demo-card" aria-labelledby="sec-placements">
+      <h2 id="sec-placements">Posicionamentos: top, right, bottom, left</h2>
+      <div class="grid">
+        <div>
+          <div class="tt" data-placement="top">
+            <button class="tt-trigger" aria-describedby="tt-top">Hover ou foco (Top)</button>
+            <div class="tt-content" id="tt-top" role="tooltip">
+              Dica exibida acima do elemento.
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="tt" data-placement="right">
+            <button class="tt-trigger" aria-describedby="tt-right">Hover ou foco (Right)</button>
+            <div class="tt-content" id="tt-right" role="tooltip">
+              Dica exibida à direita do elemento.
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="tt" data-placement="bottom">
+            <button class="tt-trigger" aria-describedby="tt-bottom">Hover ou foco (Bottom)</button>
+            <div class="tt-content" id="tt-bottom" role="tooltip">
+              Dica exibida abaixo do elemento.
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="tt" data-placement="left">
+            <button class="tt-trigger" aria-describedby="tt-left">Hover ou foco (Left)</button>
+            <div class="tt-content" id="tt-left" role="tooltip">
+              Dica exibida à esquerda do elemento.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-card" aria-labelledby="sec-rich">
+      <h2 id="sec-rich">Conteúdo rico</h2>
+      <div class="tt" data-placement="top">
+        <button class="tt-trigger" aria-describedby="tt-rich">Exibir tooltip rico</button>
+        <div class="tt-content" id="tt-rich" role="tooltip">
+          <h3 class="tt-title">Título do Tooltip</h3>
+          <p class="tt-body">Suporte a múltiplas linhas, links e ações. 100% em CSS.</p>
+          <div class="tt-actions">
+            <button class="btn" type="button">Ação 1</button>
+            <button class="btn" type="button">Ação 2</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo-card" aria-labelledby="sec-access">
+      <h2 id="sec-access">Acessibilidade</h2>
+      <ul>
+        <li>Gatilho com foco teclado (Tab) e <code>aria-describedby</code> + <code>role="tooltip"</code>.</li>
+        <li>Preferências de movimento respeitadas com <code>prefers-reduced-motion</code>.</li>
+        <li>Foco visível com anel de foco consistente.</li>
+      </ul>
+    </section>
+
+    <section class="demo-card" aria-labelledby="sec-docs">
+      <h2 id="sec-docs">Documentação de uso</h2>
+      <ol>
+        <li>Envolva o gatilho com <code>div.tt</code> e defina <code>data-placement</code> como <code>top</code>, <code>right</code>, <code>bottom</code> ou <code>left</code>.</li>
+        <li>Use um elemento acionador com classe <code>tt-trigger</code> e associe-o ao conteúdo via <code>aria-describedby</code>.</li>
+        <li>Crie o conteúdo com <code>div.tt-content</code> e <code>role="tooltip"</code>. Suporta HTML interno.</li>
+        <li>A animação é controlada por CSS. Ajuste variáveis em <code>:root</code> conforme necessário.</li>
+      </ol>
+      <p style="margin-top:8px;color:#334155">Atribuição: criado por Gabriel Demetrios Lafis.</p>
+    </section>
+  </div>
+</body>
+</html>
