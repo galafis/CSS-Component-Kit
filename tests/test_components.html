@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Component Kit - Test Page</title>
+    <link rel="stylesheet" href="../src/styles.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f4f7f6;
+        }
+        .test-section {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .test-section h2 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .component-example {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Component Kit - Test Page</h1>
+    <p>This page serves as a visual test for all CSS components to ensure functionality and proper rendering.</p>
+
+    <div class="test-section">
+        <h2>Buttons</h2>
+        <div class="component-example">
+            <button class="btn btn-primary">Primary Button</button>
+            <button class="btn btn-secondary">Secondary Button</button>
+            <button class="btn btn-outline">Outline Button</button>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Cards</h2>
+        <div class="component-example">
+            <div class="card" style="width: 300px;">
+                <div class="card-header">
+                    <h3>Card Title</h3>
+                </div>
+                <div class="card-body">
+                    <p>This is the body of the card. It contains some sample text.</p>
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary">Action</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Navbar</h2>
+        <div class="component-example">
+            <nav class="navbar">
+                <div class="navbar-brand">Brand</div>
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="#" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Alerts</h2>
+        <div class="component-example">
+            <div class="alert alert-success">Success! Your operation was successful.</div>
+            <div class="alert alert-warning">Warning! Something needs your attention.</div>
+            <div class="alert alert-danger">Error! An error occurred.</div>
+            <div class="alert alert-info">Info! Here is some information.</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Badges</h2>
+        <div class="component-example">
+            <span class="badge badge-primary">Primary</span>
+            <span class="badge badge-secondary">Secondary</span>
+            <span class="badge badge-success">Success</span>
+            <span class="badge badge-warning">Warning</span>
+            <span class="badge badge-danger">Danger</span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Modals</h2>
+        <div class="component-example">
+            <a href="#modal-example" class="btn btn-primary">Open Modal</a>
+            <div id="modal-example" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-header">
+                        <h3>Modal Title</h3>
+                        <a href="#" class="modal-close">&times;</a>
+                    </div>
+                    <div class="modal-body">
+                        <p>This is a sample modal content. It demonstrates how the modal component works.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Forms</h2>
+        <div class="component-example">
+            <div class="form-group">
+                <label for="text-input">Text Input</label>
+                <input type="text" id="text-input" class="input" placeholder="Enter text">
+            </div>
+            <div class="form-group">
+                <label for="select-input">Select</label>
+                <select id="select-input" class="select">
+                    <option>Option 1</option>
+                    <option>Option 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="textarea-input">Textarea</label>
+                <textarea id="textarea-input" class="textarea" rows="3" placeholder="Enter more text"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="valid-input">Valid Input</label>
+                <input type="text" id="valid-input" class="input is-valid" value="Valid content">
+            </div>
+            <div class="form-group">
+                <label for="invalid-input">Invalid Input</label>
+                <input type="text" id="invalid-input" class="input is-invalid" value="Invalid content">
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Breadcrumbs</h2>
+        <div class="component-example">
+            <ul class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Category</a></li>
+                <li>Current Page</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Pagination</h2>
+        <div class="component-example">
+            <ul class="pagination">
+                <li><a href="#" class="page">Previous</a></li>
+                <li><a href="#" class="page">1</a></li>
+                <li><a href="#" class="page active">2</a></li>
+                <li><a href="#" class="page">3</a></li>
+                <li><a href="#" class="page">Next</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Grid System</h2>
+        <div class="component-example">
+            <h3>Grid 2 Columns</h3>
+            <div class="grid grid-2">
+                <div style="background-color: #e0f7fa; padding: 15px; border-radius: 5px;">Item 1</div>
+                <div style="background-color: #e0f7fa; padding: 15px; border-radius: 5px;">Item 2</div>
+            </div>
+            <h3>Grid 3 Columns</h3>
+            <div class="grid grid-3">
+                <div style="background-color: #e0f7fa; padding: 15px; border-radius: 5px;">Item 1</div>
+                <div style="background-color: #e0f7fa; padding: 15px; border-radius: 5px;">Item 2</div>
+                <div style="background-color: #e0f7fa; padding: 15px; border-radius: 5px;">Item 3</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>Utilities</h2>
+        <div class="component-example">
+            <p class="h1">Heading 1</p>
+            <p class="h2">Heading 2</p>
+            <p class="h3">Heading 3</p>
+            <p class="text-muted">Muted text example.</p>
+            <div class="shadow-md rounded p-2" style="width: 200px;">Shadow and Rounded</div>
+        </div>
+    </div>
+
+</body>
+</html>
