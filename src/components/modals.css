@@ -1,0 +1,8 @@
+/* Modal (CSS-only with target) */
+.modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,.4); padding: 1rem; }
+.modal:target { display: flex; }
+.modal-dialog { background: #fff; color: var(--dark); width: min(560px, 90%); border-radius: var(--radius); box-shadow: var(--shadow-lg); overflow: hidden; }
+.modal-header, .modal-footer { padding: var(--spacing-md); background: #fafafa; }
+.modal-body { padding: var(--spacing-md); }
+.modal-close { position: absolute; inset: 1rem 1rem auto auto; text-decoration: none; font-size: 1.25rem; color: #555; }
+

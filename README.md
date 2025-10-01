@@ -2,7 +2,10 @@
 
 ![Badge de CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 ![Badge de HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
+![Badge de GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-121013?style=flat&logo=github&logoColor=white)
 ![Badge de Licença MIT](https://img.shields.io/badge/license-MIT-blue.svg)
+
+
 
 ## Português
 
@@ -10,7 +13,8 @@ Kit completo de componentes UI reutilizáveis implementados com CSS3 puro, inclu
 
 ### 🎯 Demonstração
 
-Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando o desenvolvimento de interfaces web consistentes e profissionais. Abra o `index.html` em seu navegador para ver todos os componentes em ação!
+Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando o desenvolvimento de interfaces web consistentes e profissionais.
+Acesse a demonstração interativa em [GitHub Pages](https://galafis.github.io/CSS-Component-Kit/) para ver todos os componentes em ação!
 
 ### ✨ Características
 
@@ -23,14 +27,60 @@ Este projeto oferece uma biblioteca de componentes prontos para uso, facilitando
 
 ### 🛠️ Tecnologias
 
-- **HTML5**: Estrutura semântica
-- **CSS3**: Flexbox, Grid, Custom Properties
-- **CSS Variables**: Sistema de design tokens
+Este projeto é construído com as seguintes tecnologias:
+
+- **HTML5**: Utilizado para a estruturação semântica de todos os componentes e páginas de demonstração.
+- **CSS3**: A base de todo o kit, empregando recursos modernos como Flexbox, Grid Layout, Custom Properties (variáveis CSS) para um design responsivo e modular.
+- **CSS Variables**: Essenciais para o sistema de design, permitindo fácil personalização de cores, espaçamentos e tipografia.
+- **Mermaid**: Utilizado para gerar diagramas de arquitetura e estrutura do projeto diretamente do código Markdown.
+- **GitHub Pages**: Plataforma de hospedagem estática para a demonstração interativa dos componentes.
 
 ### 📁 Estrutura do Projeto
 
-![Estrutura do Projeto](assets/project_structure.png)
+```mermaid
+graph TD
+    A[CSS-Component-Kit] --> B(src/)
+    A --> C(tests/)
+    A --> D(docs/)
+    A --> E(config/)
+    B --> B1(base/)
+    B --> B2(components/)
+    B --> B3(layouts/)
+    B --> B4(utils/)
+    B --> B5(extensions/)
+    B --> B6(index.html)
+    B --> B7(styles.css)
+    B1 --> B1a(base.css)
+    B2 --> B2a(buttons.css)
+    B2 --> B2b(cards.css)
+    B2 --> B2c(navbar.css)
+    B2 --> B2d(alerts.css)
+    B2 --> B2e(badges.css)
+    B2 --> B2f(modals.css)
+    B2 --> B2g(forms.css)
+    B2 --> B2h(breadcrumbs.css)
+    B2 --> B2i(pagination.css)
+    B3 --> B3a(layout.css)
+    B4 --> B4a(utilities.css)
+    B5 --> B5a(README-EXTENSIONS.md)
+    B5 --> B5b(accordion.html)
+    B5 --> B5c(dark-mode.html)
+    B5 --> B5d(tabs.html)
+    B5 --> B5e(tooltip.html)
+    C --> C1(test_components.html)
+    D --> D1(project_structure.mmd)
+    D --> D2(project_structure.png)
+    A --> F(LICENSE)
+    A --> G(README.md)
+```
 
+![Estrutura do Projeto](docs/project_structure.png)
+
+
+
+### ✅ Testes e Validação
+
+Para garantir a funcionalidade e a integridade dos componentes, o projeto inclui uma suíte de testes visuais. Você pode acessá-los abrindo o arquivo `tests/test_components.html` diretamente no seu navegador. Este arquivo demonstra a renderização e o comportamento esperado de cada componente após a refatoração e garante que todas as melhorias foram aplicadas corretamente.
 
 ### 🚀 Como Usar
 
@@ -43,15 +93,7 @@ git clone https://github.com/galafis/CSS-Component-Kit.git
 cd CSS-Component-Kit
 ```
 
-**2.** Abra o arquivo `src/index.html` no navegador:
 
-```bash
-# Usando Python
-python -m http.server 8000
-
-# Usando Node.js
-npx serve .
-```
 
 #### Uso dos Componentes
 
@@ -202,7 +244,8 @@ Complete kit of reusable UI components implemented with pure CSS3, including but
 
 ### 🎯 Demo
 
-This project offers a library of ready-to-use components, facilitating the development of consistent and professional web interfaces. Open `index.html` in your browser to see all components in action!
+This project offers a library of ready-to-use components, facilitating the development of consistent and professional web interfaces.
+Access the interactive demo on [GitHub Pages](https://galafis.github.io/CSS-Component-Kit/) to see all components in action!
 
 ### ✨ Features
 
@@ -215,14 +258,60 @@ This project offers a library of ready-to-use components, facilitating the devel
 
 ### 🛠️ Technologies
 
-- **HTML5**: Semantic structure
-- **CSS3**: Flexbox, Grid, Custom Properties
-- **CSS Variables**: Design token system
+This project is built with the following technologies:
+
+- **HTML5**: Used for the semantic structuring of all components and demo pages.
+- **CSS3**: The foundation of the entire kit, employing modern features like Flexbox, Grid Layout, and Custom Properties (CSS variables) for responsive and modular design.
+- **CSS Variables**: Essential for the design system, allowing easy customization of colors, spacing, and typography.
+- **Mermaid**: Used to generate architecture and project structure diagrams directly from Markdown code.
+- **GitHub Pages**: Static hosting platform for the interactive demonstration of components.
 
 ### 📁 Project Structure
 
-![Estrutura do Projeto](assets/project_structure.png)
+```mermaid
+graph TD
+    A[CSS-Component-Kit] --> B(src/)
+    A --> C(tests/)
+    A --> D(docs/)
+    A --> E(config/)
+    B --> B1(base/)
+    B --> B2(components/)
+    B --> B3(layouts/)
+    B --> B4(utils/)
+    B --> B5(extensions/)
+    B --> B6(index.html)
+    B --> B7(styles.css)
+    B1 --> B1a(base.css)
+    B2 --> B2a(buttons.css)
+    B2 --> B2b(cards.css)
+    B2 --> B2c(navbar.css)
+    B2 --> B2d(alerts.css)
+    B2 --> B2e(badges.css)
+    B2 --> B2f(modals.css)
+    B2 --> B2g(forms.css)
+    B2 --> B2h(breadcrumbs.css)
+    B2 --> B2i(pagination.css)
+    B3 --> B3a(layout.css)
+    B4 --> B4a(utilities.css)
+    B5 --> B5a(README-EXTENSIONS.md)
+    B5 --> B5b(accordion.html)
+    B5 --> B5c(dark-mode.html)
+    B5 --> B5d(tabs.html)
+    B5 --> B5e(tooltip.html)
+    C --> C1(test_components.html)
+    D --> D1(project_structure.mmd)
+    D --> D2(project_structure.png)
+    A --> F(LICENSE)
+    A --> G(README.md)
+```
 
+![Estrutura do Projeto](docs/project_structure.png)
+
+
+
+### ✅ Tests and Validation
+
+To ensure the functionality and integrity of the components, the project includes a suite of visual tests. You can access them by opening the `tests/test_components.html` file directly in your browser. This file demonstrates the rendering and expected behavior of each component after refactoring and ensures that all improvements have been correctly applied.
 
 ### 🚀 How to Use
 
@@ -235,15 +324,7 @@ git clone https://github.com/galafis/CSS-Component-Kit.git
 cd CSS-Component-Kit
 ```
 
-**2.** Open the `src/index.html` file in your browser:
 
-```bash
-# Using Python
-python -m http.server 8000
-
-# Using Node.js
-npx serve .
-```
 
 #### Component Usage
 

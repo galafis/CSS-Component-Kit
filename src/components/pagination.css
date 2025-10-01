@@ -1,0 +1,5 @@
+/* Pagination */
+.pagination { list-style: none; display: inline-flex; gap: .25rem; padding: 0; margin: 0; }
+.pagination .page { padding: .5rem .75rem; border: 1px solid #e5e7eb; border-radius: var(--radius); text-decoration: none; color: inherit; }
+.pagination .page.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+

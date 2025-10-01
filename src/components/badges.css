@@ -1,0 +1,8 @@
+/* Badges */
+.badge { display: inline-block; padding: .25rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 600; }
+.badge-primary { background: var(--primary); color: #fff; }
+.badge-secondary { background: var(--secondary); color: #fff; }
+.badge-success { background: var(--success); color: #fff; }
+.badge-warning { background: var(--warning); color: #000; }
+.badge-danger { background: var(--danger); color: #fff; }
+

@@ -1,0 +1,8 @@
+/* Navbar */
+.navbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; justify-content: space-between; padding: .75rem 1rem; background: linear-gradient(90deg, var(--primary), var(--secondary)); color: #fff; }
+.navbar-brand { font-weight: 700; }
+.navbar-nav { list-style: none; display: flex; gap: 1rem; margin: 0; padding: 0; }
+.nav-item {}
+.nav-link { color: #fff; text-decoration: none; opacity: .9; }
+.nav-link:hover { opacity: 1; text-decoration: underline; }
+

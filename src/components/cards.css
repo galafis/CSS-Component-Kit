@@ -1,0 +1,6 @@
+/* Cards */
+.card { background: #fff; border: 1px solid #e5e7eb; border-radius: var(--radius); box-shadow: var(--shadow-sm); overflow: hidden; }
+.card-header { padding: var(--spacing-md); background: #fafafa; border-bottom: 1px solid #eee; }
+.card-body { padding: var(--spacing-md); }
+.card-footer { padding: var(--spacing-md); background: #fafafa; border-top: 1px solid #eee; }
+

@@ -1,0 +1,7 @@
+/* Alerts */
+.alert { padding: .75rem 1rem; border-radius: var(--radius); border: 1px solid transparent; }
+.alert-success { background: #e8f6ee; color: #155724; border-color: #c3e6cb; }
+.alert-warning { background: #fff8e5; color: #856404; border-color: #ffe8a1; }
+.alert-danger { background: #fdecea; color: #721c24; border-color: #f5c6cb; }
+.alert-info { background: #e8f4f8; color: #0c5460; border-color: #bee5eb; }
+
